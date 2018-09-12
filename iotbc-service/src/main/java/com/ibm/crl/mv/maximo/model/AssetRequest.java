@@ -5,7 +5,7 @@ import java.util.List;
 
 public class AssetRequest {
 	
-	private String asset_number;
+	private String assetNumber;
 	private String des;
 	private	String srtype;
 	private String longDes;
@@ -13,14 +13,13 @@ public class AssetRequest {
 	private String reportDate;
 	private String status;
 	private List<FileModel> fileList = new ArrayList<>();
-	
 
-	public String getAsset_number() {
-		return asset_number;
+	public String getAssetNumber() {
+		return assetNumber;
 	}
 
-	public void setAsset_number(String asset_number) {
-		this.asset_number = asset_number;
+	public void setAssetNumber(String assetNumber) {
+		this.assetNumber = assetNumber;
 	}
 
 	public String getDes() {

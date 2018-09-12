@@ -15,7 +15,7 @@ public class RichDocDescriptor {
 	
 	private String cosUrl;
 	
-	private String record_ID;
+	private String recordId;
 
 	public String getFullName() {
 		return fullName;
@@ -67,18 +67,12 @@ public class RichDocDescriptor {
 		this.cosUrl = cosUrl;
 	}
 
-	public String getRecord_ID() {
-		return record_ID;
+
+	public String getRecordId() {
+		return recordId;
 	}
 
-	public void setRecord_ID(String record_ID) {
-		this.record_ID = record_ID;
+	public void setRecordId(String recordId) {
+		this.recordId = recordId;
 	}
-
-	
-	
-
-
-	
-	
 }

@@ -2,36 +2,33 @@ package com.ibm.crl.mv.db.model;
 
 public class MesJob extends Mes {
 
-	private String record_ID;
+	private String recordID;
 	
-	private String transaction_ID;
+	private String transactionID;
 	
-	private String create_time;
+	private String createTime;
 
-	public final String getRecord_ID() {
-		return record_ID;
+	public String getRecordID() {
+		return recordID;
 	}
 
-	public final void setRecord_ID(String record_ID) {
-		this.record_ID = record_ID;
+	public void setRecordID(String recordID) {
+		this.recordID = recordID;
 	}
 
-	public final String getTransaction_ID() {
-		return transaction_ID;
+	public String getTransactionID() {
+		return transactionID;
 	}
 
-	public final void setTransaction_ID(String transaction_ID) {
-		this.transaction_ID = transaction_ID;
+	public void setTransactionID(String transactionID) {
+		this.transactionID = transactionID;
 	}
 
-	public final String getCreate_time() {
-		return create_time;
+	public String getCreateTime() {
+		return createTime;
 	}
 
-	public final void setCreate_time(String create_time) {
-		this.create_time = create_time;
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
-
-	
-	
 }

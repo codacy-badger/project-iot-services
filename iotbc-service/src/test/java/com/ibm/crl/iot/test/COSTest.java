@@ -53,156 +53,7 @@ public class COSTest {
 		String demotime = new Timestamp(System.currentTimeMillis()).toString();
 		System.out.println("Current time: " +demotime);
 		_cos = createClient(api_key, service_instance_id, endpoint_url, location);
-		
-		
-		//AmazonS3 _cos = COSClient.getClient();
-		
-		
-//		delAllObjects(bucketName, _cos);
-//		delBucket(bucketName, _cos);
-
-//		_cos.deleteBucket(bucketName);
-//		 boolean exists = _cos.doesBucketExist(bucketName);
-//		 System.out.println(exists);
-
-		// listBuckets(_cos);
-
-		// create standard client
-		
-//	_cos.createBucket(bucketName);
-	
-
-//
 		listObjects(bucketName, _cos);
-		
-		
-		
-		
-//		ByteArrayOutputStream  baos  = null;
-//		try {
-//			
-//			 baos = new ByteArrayOutputStream();
-//			
-//			
-////			byte[] buff = new byte[s3ObjectInputStream.available()];
-//			
-//			byte[] bytebuff = new byte[8192];
-//			
-////			int pos = 0;
-//			int len = 0;
-//			
-//			while((len = s3ObjectInputStream.read(bytebuff)) != -1) {
-//				
-//				baos.write(bytebuff, 0, len);
-//				
-////				System.arraycopy(bytebuff, 0,buff,  pos, len);
-//				
-//			}
-//			
-//			
-//			byte[] buff = baos.toByteArray();
-//			
-//			String md5 = MD5Util.getFileMD5(buff);
-//			
-//			
-//			
-//         System.out.println(md5);
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}finally {
-//			
-//			try {
-//				if(baos != null)
-//					baos.close();
-//				
-//				if(s3ObjectInputStream != null)
-//					s3ObjectInputStream.close();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		
-		
-		
-		
-		 
-//		String content = _cos.getObjectAsString(bucketName, "test1.png");
-//		
-//		StringReader reader = new StringReader(content);
-		
-//		try {
-//			7f0a8a284d6224aeaec10bcb1761e55f
-//			byte[] buff = IOUtils.toByteArray(reader);
-//			
-//			String md5 = MD5Util.getFileMD5(buff);
-//			
-//			String file = "/Users/Jinhui/Desktop/test1.png";
-//			
-//			RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
-//			
-//			byte[] bytebuff = new byte[(int)randomAccessFile.length()];
-//			randomAccessFile.readFully(bytebuff);
-//			
-//			String md5f = MD5Util.getFileMD5(bytebuff);
-//			
-//			System.out.println(String.format("md51 : %s /n  md52 : %s ", md5,""));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-		
-		
-//		System.out.println(getEncoding(content));
-//		System.out.println("content:  " + content);
-		
-//		 1. decode binary data
-//					byte[] bytebuff = Base64.decodeBase64(dd.getDocBinary());
-//					rdd.setBinaryContent(bytebuff);
-//
-//					String md5 = MD5Util.getFileMD5(rdd.getBinaryContent());
-		
-//		Base64.Decoder decoder = Base64.getDecoder();
-//		Base64.Encoder encoder = Base64.getEncoder();
-//		//编码
-//		byte[] textByte = content.getBytes("UTF-8");
-//		String encodedText = encoder.encodeToString(textByte);
-//		System.out.println(content);
-		
-		
-//		try {
-//			
-//			System.out.println("base64 ------------- \n:  " + end);
-//			String hash_b = MD5Util.getStringMD5(content);
-//			System.out.println("hash:  " + hash_b);
-//			
-//		} catch (Exception e) {
-//			// TODO: handle exception
-		//}
-		
-		
-		
-		
-		 //VSRespResult respResult = DocHandler.getInstance().validation("org.poc.maximo.example.Sr", "6f5125ae-24f5-4758-830c-d8add1f9c758", false);
-		 
-		 //测试成功
-//		 try {
-//			 
-//			 HttpResponse response = HttpRequestUtil.sendGet("http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/", "6f5125ae-24f5-4758-830c-d8add1f9c758");
-//			 if (response.getStatusLine().getStatusCode() == 200) {
-//				 String fine = EntityUtils.toString(response.getEntity(),"UTF-8");
-//				 System.out.println(fine);
-//			 }else {
-//				System.out.println("xxxxxxxxxxxx");
-//			}
-//			
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			System.out.println(e);
-//		}
-
 	}
 	
 	
@@ -313,9 +164,7 @@ public class COSTest {
 		for (final Bucket bucket : bucketList) {
 			System.out.println(bucket.getName());
 		}
-		System.out.println();
-		
-		
+
 		System.out.println( cos.listObjects("mes"));
 		
 	}
@@ -365,4 +214,153 @@ public class COSTest {
 		}
 	}
 
+
+
+	//AmazonS3 _cos = COSClient.getClient();
+
+
+//		delAllObjects(bucketName, _cos);
+//		delBucket(bucketName, _cos);
+
+//		_cos.deleteBucket(bucketName);
+//		 boolean exists = _cos.doesBucketExist(bucketName);
+//		 System.out.println(exists);
+
+	// listBuckets(_cos);
+
+	// create standard client
+
+//	_cos.createBucket(bucketName);
+
+
+//
+
+
+
+
+
+//		ByteArrayOutputStream  baos  = null;
+//		try {
+//
+//			 baos = new ByteArrayOutputStream();
+//
+//
+////			byte[] buff = new byte[s3ObjectInputStream.available()];
+//
+//			byte[] bytebuff = new byte[8192];
+//
+////			int pos = 0;
+//			int len = 0;
+//
+//			while((len = s3ObjectInputStream.read(bytebuff)) != -1) {
+//
+//				baos.write(bytebuff, 0, len);
+//
+////				System.arraycopy(bytebuff, 0,buff,  pos, len);
+//
+//			}
+//
+//
+//			byte[] buff = baos.toByteArray();
+//
+//			String md5 = MD5Util.getFileMD5(buff);
+//
+//
+//
+//         System.out.println(md5);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}finally {
+//
+//			try {
+//				if(baos != null)
+//					baos.close();
+//
+//				if(s3ObjectInputStream != null)
+//					s3ObjectInputStream.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+
+
+
+
+
+//		String content = _cos.getObjectAsString(bucketName, "test1.png");
+//
+//		StringReader reader = new StringReader(content);
+
+//		try {
+//			7f0a8a284d6224aeaec10bcb1761e55f
+//			byte[] buff = IOUtils.toByteArray(reader);
+//
+//			String md5 = MD5Util.getFileMD5(buff);
+//
+//			String file = "/Users/Jinhui/Desktop/test1.png";
+//
+//			RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw");
+//
+//			byte[] bytebuff = new byte[(int)randomAccessFile.length()];
+//			randomAccessFile.readFully(bytebuff);
+//
+//			String md5f = MD5Util.getFileMD5(bytebuff);
+//
+//			System.out.println(String.format("md51 : %s /n  md52 : %s ", md5,""));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+
+
+//		System.out.println(getEncoding(content));
+//		System.out.println("content:  " + content);
+
+//		 1. decode binary data
+//					byte[] bytebuff = Base64.decodeBase64(dd.getDocBinary());
+//					rdd.setBinaryContent(bytebuff);
+//
+//					String md5 = MD5Util.getFileMD5(rdd.getBinaryContent());
+
+//		Base64.Decoder decoder = Base64.getDecoder();
+//		Base64.Encoder encoder = Base64.getEncoder();
+//		//编码
+//		byte[] textByte = content.getBytes("UTF-8");
+//		String encodedText = encoder.encodeToString(textByte);
+//		System.out.println(content);
+
+
+//		try {
+//
+//			System.out.println("base64 ------------- \n:  " + end);
+//			String hash_b = MD5Util.getStringMD5(content);
+//			System.out.println("hash:  " + hash_b);
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+	//}
+
+
+
+
+	//VSRespResult respResult = DocHandler.getInstance().validation("org.poc.maximo.example.Sr", "6f5125ae-24f5-4758-830c-d8add1f9c758", false);
+
+	//测试成功
+//		 try {
+//
+//			 HttpResponse response = HttpRequestUtil.sendGet("http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/", "6f5125ae-24f5-4758-830c-d8add1f9c758");
+//			 if (response.getStatusLine().getStatusCode() == 200) {
+//				 String fine = EntityUtils.toString(response.getEntity(),"UTF-8");
+//				 System.out.println(fine);
+//			 }else {
+//				System.out.println("xxxxxxxxxxxx");
+//			}
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			System.out.println(e);
+//		}
 }

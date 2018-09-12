@@ -2,51 +2,44 @@ package com.ibm.crl.mv.db.model;
 
 public class MesDoc extends Mes{
 
-	private String hash_key;
+	private String hashKey;
 	
-	private String doc_URL;
+	private String docURL;
 	
-	private String record_ID;
+	private String recordID;
 	
-	private String create_time;
+	private String createTime;
 
-	public final String getHash_key() {
-		return hash_key;
+
+	public String getHashKey() {
+		return hashKey;
 	}
 
-	public final void setHash_key(String hash_key) {
-		this.hash_key = hash_key;
+	public void setHashKey(String hashKey) {
+		this.hashKey = hashKey;
 	}
 
-	public final String getDoc_URL() {
-		return doc_URL;
+	public String getDocURL() {
+		return docURL;
 	}
 
-	public final void setDoc_URL(String doc_URL) {
-		this.doc_URL = doc_URL;
+	public void setDocURL(String docURL) {
+		this.docURL = docURL;
 	}
 
-	public final String getRecord_ID() {
-		return record_ID;
+	public String getRecordID() {
+		return recordID;
 	}
 
-	public final void setRecord_ID(String record_ID) {
-		this.record_ID = record_ID;
+	public void setRecordID(String recordID) {
+		this.recordID = recordID;
 	}
 
-	public final String getCreate_time() {
-		return create_time;
+	public String getCreateTime() {
+		return createTime;
 	}
 
-	public final void setCreate_time(String create_time) {
-		this.create_time = create_time;
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
 	}
-
-	
-
-
-	
-	
-	
-	
 }

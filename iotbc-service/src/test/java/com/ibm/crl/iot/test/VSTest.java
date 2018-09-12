@@ -35,21 +35,7 @@ public class VSTest {
 		
 		String hash_b = gethashB("doc.txt");
 		System.out.println("hash_b =   "+hash_b);
-		
-		
-//		//composer测试
-//		String id = "6f5125ae-24f5-4758-830c-d8add1f9c758";
-//		System.out.println("composer 结果：\n" +composerTest(id));
-//		
-//		//结果测试 
-//		ObjectMapper oMapper = new ObjectMapper();
-//		 try {
-//			System.out.println("rsult 结果:\n"+oMapper.writeValueAsString(vsResult(id)));
-//		} catch (JsonProcessingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+
 	}
 	
 	
@@ -124,7 +110,7 @@ public class VSTest {
 					
 					VSResult vsResult = new VSResult();
 					vsResult.set$class(aResult.get$class());
-					vsResult.setLong_description("Verify file contents！");
+					vsResult.setLongDescription("Verify file contents！");
 					vsResult.setStatus("Verified");
 					vsResult.setTicketid(id);
 					
@@ -132,7 +118,7 @@ public class VSTest {
 					List<AssetDocs>docs = aResult.getDocs();
 					for (AssetDocs doc : docs) {
 						VSDoc vsDoc = new VSDoc();
-						String doc_url = doc.getDoc_url();
+						String doc_url = doc.getDocUrl();
 						String filename = doc_url.split("/mes/")[1];
 						vsDoc.setFullName(filename);
 						String hash_b =gethashB(filename);

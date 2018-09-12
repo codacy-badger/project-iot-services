@@ -9,7 +9,7 @@ public class SRModel {
    private String ticketid;
    private String srtype;
    private String description;
-   private String description_longdescription;
+   private String descriptionLongdescription;
    private String location;
    private String reportdate;
    private String actualstart;
@@ -45,14 +45,15 @@ public class SRModel {
         return description;
     }
 
-   public void setDescription_longdescription(String description_longdescription) {
-        this.description_longdescription = description_longdescription;
-    }
-    public String getDescription_longdescription() {
-        return description_longdescription;
+    public String getDescriptionLongdescription() {
+        return descriptionLongdescription;
     }
 
-   public void setLocation(String location) {
+    public void setDescriptionLongdescription(String descriptionLongdescription) {
+        this.descriptionLongdescription = descriptionLongdescription;
+    }
+
+    public void setLocation(String location) {
         this.location = location;
     }
     public String getLocation() {

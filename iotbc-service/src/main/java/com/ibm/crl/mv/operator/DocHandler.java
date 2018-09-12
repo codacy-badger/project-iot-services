@@ -111,7 +111,7 @@ public class DocHandler {
 			bumper.setDescription(rd.getDescription());
 			bumper.setDocUrl(rd.getCosUrl());
 			bumper.setHash(rd.getHashKey());
-			bumper.setRecordId(rd.getRecord_ID());
+			bumper.setRecordId(rd.getRecordId());
 			bumper.setCreateTime(DateUtils.getUTCTime());
 
 			composerDescriptor.getDocs().add(bumper);
@@ -219,7 +219,7 @@ public class DocHandler {
 				continue;
 			}
 
-			rdd.setRecord_ID(record_ID);
+			rdd.setRecordId(record_ID);
 
 			rdd.setDescription(dd.getDescription());
 
@@ -285,23 +285,23 @@ public class DocHandler {
 		String currentTime = DateUtils.getStringDate();
 
 		MesJob job = new MesJob();
-		job.setRecord_ID(record_ID);
-		job.setCreate_time(currentTime);
+		job.setRecordID(record_ID);
+		job.setCreateTime(currentTime);
 		mesJobSet.add(job.describe());
 
 		for (RichDocDescriptor ufd : descSet) {
 
 			String fullName = ufd.getFullName();
 
-			if (fullName.startsWith(ufd.getRecord_ID()))
+			if (fullName.startsWith(ufd.getRecordId()))
 				continue;
 
 			MesDoc doc = new MesDoc();
 
-			doc.setHash_key(ufd.getHashKey());
-			doc.setDoc_URL(ufd.getCosUrl());
-			doc.setRecord_ID(record_ID);
-			doc.setCreate_time(currentTime);
+			doc.setHashKey(ufd.getHashKey());
+			doc.setDocURL(ufd.getCosUrl());
+			doc.setRecordID(record_ID);
+			doc.setCreateTime(currentTime);
 
 			mesDocSet.add(doc.describe());
 		}

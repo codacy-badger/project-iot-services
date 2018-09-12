@@ -34,7 +34,7 @@ public class COSOperatorImpl implements COSBucketOperator, COSObjectOperator {
 	}
 
 	@Override
-	public String uploadObject(AmazonS3 _cos, String bucketName, String filename, java.io.File file)
+	public String uploadObject(AmazonS3 _cos, String bucketName, String filename, File file)
 			throws SdkClientException {
 
 		_cos.putObject(bucketName, filename, file);
@@ -70,11 +70,11 @@ public class COSOperatorImpl implements COSBucketOperator, COSObjectOperator {
 
 	}
 
-	@Override
-	public List<?> listObject(AmazonS3 _cos, String bucketName) throws SdkClientException {
-
-		return null;
-	}
+//	@Override
+//	public List<?> listObject(AmazonS3 _cos, String bucketName) throws SdkClientException {
+//
+//		return null;
+//	}
 
 	@Override
 	public void delBucket(AmazonS3 _cos, String bucketName) throws SdkClientException {
@@ -84,10 +84,10 @@ public class COSOperatorImpl implements COSBucketOperator, COSObjectOperator {
 		log.info(String.format("Bucket: %s deleted!", bucketName));
 	}
 
-	@Override
-	public void listBuckets(AmazonS3 _cos) throws SdkClientException {
-		return;
-	}
+//	@Override
+//	public void listBuckets(AmazonS3 _cos) throws SdkClientException {
+//		retur;
+//	}
 
 	@Override
 	public boolean doesBucketExist(AmazonS3 _cos, String bucket) throws SdkClientException {

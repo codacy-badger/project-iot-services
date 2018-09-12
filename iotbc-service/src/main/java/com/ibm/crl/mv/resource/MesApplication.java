@@ -148,7 +148,7 @@ public class MesApplication {
 			return apResult;
 		}
 		
-		if (StringUtils.isEmpty(body) || body.equals("{}")) {
+		if (StringUtils.isEmpty(body) || "{}".equals(body)) {
 			apResult.setMeg("ERROR:  request body is empty!!!");
 			apResult.setsResult(SRResult.Fail);
 			apResult.setsResult(null);

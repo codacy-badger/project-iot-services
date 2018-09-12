@@ -100,12 +100,12 @@ public class MaximoHandler {
 		SRHistModel aSrHist = new SRHistModel();
 		 
 		aSr.set$class(ASSET_SR);
-		aSr.setTicketid("SR-" + aRequest.getAsset_number()+"_"+ NOWDATE + (int)((Math.random()*9+1)*100000));//SR-1306_2018-09-03
+		aSr.setTicketid("SR-" + aRequest.getAssetNumber()+"_"+ NOWDATE + (int)((Math.random()*9+1)*100000));//SR-1306_2018-09-03
 		aSr.setSrtype(aRequest.getSrtype());
 		aSr.setActualstart(NOWDATE);
 		aSr.setReportdate(NOWDATE);
 		aSr.setDescription(aRequest.getDes());
-		aSr.setDescription_longdescription(aRequest.getLongDes());
+		aSr.setDescriptionLongdescription(aRequest.getLongDes());
 		aSr.setLocation(aRequest.getLocation());
 		aSr.setStatus(aRequest.getStatus());
 		aSr.setStatusDescription(aRequest.getStatus());
