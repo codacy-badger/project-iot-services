@@ -14,7 +14,7 @@ public class SRModel {
    private String reportdate;
    private String actualstart;
    private String status;
-   private String status_description;
+   private String statusDescription;
    private List<SRDocs> docs = new ArrayList<>();
    
    public void set$class(String $class) {
@@ -80,14 +80,13 @@ public class SRModel {
         return status;
     }
 
-   public void setStatus_description(String status_description) {
-        this.status_description = status_description;
-    }
-    public String getStatus_description() {
-        return status_description;
-    }
-
-    public List<SRDocs> getDocs() {
+    public String getStatusDescription() {
+		return statusDescription;
+	}
+	public void setStatusDescription(String statusDescription) {
+		this.statusDescription = statusDescription;
+	}
+	public List<SRDocs> getDocs() {
     	return docs;
     }
     public void setDocs(List<SRDocs> docs) {

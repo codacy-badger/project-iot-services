@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.ibm.crl.mv.db.model.InsertOperator;
 import com.ibm.crl.mv.db.model.MesDoc;
-import com.ibm.crl.mv.model.RespResult.ResStatus;
 import com.ibm.crl.mv.utils.DBMaker;
 
 public class MesDaoImpl implements MesDao {
@@ -118,6 +117,8 @@ public class MesDaoImpl implements MesDao {
 	public MesDoc selectDocByHash(String tableName, String hash) throws SQLException {
 		
 		
+		MesDoc mesDoc = new MesDoc();
+		
 		try(DruidPooledConnection conn = DBMaker.getConn()){
 			
 			String sql = "select *  from  " + tableName + " where hash_key = ?";
@@ -127,10 +128,9 @@ public class MesDaoImpl implements MesDao {
 			ps.setString(1, hash);
 			
 			ResultSet rs = ps.executeQuery();
-		
+			
 			while(rs.next()) {
 				
-				MesDoc mesDoc = new MesDoc();
 				String hash_key = rs.getString("hash_key");
 				mesDoc.setHash_key(hash_key);
 				
@@ -143,13 +143,11 @@ public class MesDaoImpl implements MesDao {
 				String create_time = rs.getString("create_time");
 				mesDoc.setCreate_time(create_time);
 				
-				return mesDoc;
 			}
 			
 		}
 		
-		return null;
-		
+		return mesDoc;
 		
 	}
 

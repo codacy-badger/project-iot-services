@@ -9,7 +9,7 @@ public class FabricFineResp {
 	
 	private String ticketid;
 	
-	private String long_description;
+	private String longDescription;
 	
 	private String status;
 	
@@ -37,13 +37,13 @@ public class FabricFineResp {
 	}
 
 
-	public String getLong_description() {
-		return long_description;
+	public String getLongDescription() {
+		return longDescription;
 	}
 
 
-	public void setLong_description(String long_description) {
-		this.long_description = long_description;
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
 	}
 
 

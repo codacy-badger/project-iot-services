@@ -11,16 +11,14 @@ import com.ibm.crl.mv.utils.DBMaker;
 
 
 public class MesListener implements ServletContextListener {
+	
+	private static String path = "config.properties";
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
 		// TODO Auto-generated method stub
 		ServletContextListener.super.contextDestroyed(sce);
 	}
-
-
-	
-	private static String path = "config.properties";
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {

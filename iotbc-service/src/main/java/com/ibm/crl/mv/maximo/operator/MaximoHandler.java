@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,8 +17,8 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ibm.cloud.objectstorage.SdkClientException;
-import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
+//import com.ibm.cloud.objectstorage.SdkClientException;
+//import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
 
 import com.ibm.crl.mv.maximo.model.AssetPostResult;
 import com.ibm.crl.mv.maximo.model.AssetPostResult.SRResult;
@@ -35,8 +34,8 @@ import com.ibm.crl.mv.maximo.model.SRModel;
 import com.ibm.crl.mv.maximo.model.SaveFileModel;
 
 import com.ibm.crl.mv.maximo.model.UpdateList;
-import com.ibm.crl.mv.operator.COSOperatorImpl;
-import com.ibm.crl.mv.utils.COSClient;
+//import com.ibm.crl.mv.operator.COSOperatorImpl;
+//import com.ibm.crl.mv.utils.COSClient;
 import com.ibm.crl.mv.utils.ConfigUtil;
 import com.ibm.crl.mv.utils.HttpRequestUtil;
 import com.ibm.crl.mv.utils.MD5Util;
@@ -84,9 +83,9 @@ public class MaximoHandler {
 //		}
 //		
 		if (StringUtils.isEmpty(aRequest.getAsset_number()) || StringUtils.isEmpty(aRequest.getDes()) 
-			|| StringUtils.isEmpty(aRequest.getLocation()) || StringUtils.isEmpty(aRequest.getLong_des())
+			|| StringUtils.isEmpty(aRequest.getLocation()) || StringUtils.isEmpty(aRequest.getLongDes())
 			|| StringUtils.isEmpty(aRequest.getSrtype()) || StringUtils.isEmpty(aRequest.getStatus())
-			|| aRequest.getFile_list().isEmpty() || StringUtils.isEmpty(aRequest.getReport_date())) {
+			|| aRequest.getFileList().isEmpty() || StringUtils.isEmpty(aRequest.getReportDate())) {
 			rr.setMeg("here is  the field of null value in request body");
 			rr.setsResult(SRResult.Fail);
 			rr.setsModel(null);
@@ -106,28 +105,28 @@ public class MaximoHandler {
 		aSr.setActualstart(NOWDATE);
 		aSr.setReportdate(NOWDATE);
 		aSr.setDescription(aRequest.getDes());
-		aSr.setDescription_longdescription(aRequest.getLong_des());
+		aSr.setDescription_longdescription(aRequest.getLongDes());
 		aSr.setLocation(aRequest.getLocation());
 		aSr.setStatus(aRequest.getStatus());
-		aSr.setStatus_description(aRequest.getStatus());
+		aSr.setStatusDescription(aRequest.getStatus());
 		
-		List<FileModel> fModels = aRequest.getFile_list();
+		List<FileModel> fModels = aRequest.getFileList();
 		fModels.forEach(fm -> {
 			
-			byte[] by = Base64.decodeBase64(fm.getFile_binary());
+			byte[] by = Base64.decodeBase64(fm.getFileBinary());
 			String md5 = MD5Util.getFileMD5(by);
 			
 			SaveFileModel saveFModel = new SaveFileModel();
-			saveFModel.setFile_name(aSr.getTicketid()+"_"+fm.getFile_name());
-			saveFModel.setFile_binary(by);
+			saveFModel.setFileName(aSr.getTicketid()+"_"+fm.getFileName());
+			saveFModel.setFileBinary(by);
 			try {
 				String file_href = saveFile(saveFModel);
 				
 				SRDocs docs = new SRDocs();
 				docs.set$class(ASSET_SR_DOC);
-				docs.setFile_href(file_href);
-				docs.setFile_name(saveFModel.getFile_name());
-				docs.setRecord_id(UUID.randomUUID().toString());
+				docs.setFileHref(file_href);
+				docs.setFileName(saveFModel.getFileName());
+				docs.setRecordId(UUID.randomUUID().toString());
 				docs.setHash(md5);
 				aSr.getDocs().add(docs);	
 				
@@ -160,7 +159,7 @@ public class MaximoHandler {
 					logger.info("----- updateEvent response from composer --------:\n" + fine2);
 					UpdateRep tRep = jsonOm.readValue(fine2, UpdateRep.class);
 					aSrHist.set$class(ASSET_SR_HIST);
-					aSrHist.setTicketid_time(aRequest.getAsset_number()+"_"+NOWDATE + (int)((Math.random()*9+1)*100000));//
+					aSrHist.setTicketidTime(aRequest.getAsset_number()+"_"+NOWDATE + (int)((Math.random()*9+1)*100000));//
 					aSrHist.setEvt(tRep);
 					String histParam = jsonOm.writeValueAsString(aSrHist);
 					
@@ -253,27 +252,27 @@ public class MaximoHandler {
 	/**把文件保存到file—server 并且上传到upload
 	 * @throws IOException */ 
 	private String saveFile(SaveFileModel file) throws IOException{
-		File persistF = new File(Dir + File.separator + file.getFile_name());
+		File persistF = new File(Dir + File.separator + file.getFileName());
 		try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(persistF))) {
-			bos.write(file.getFile_binary(), 0, file.getFile_binary().length);
+			bos.write(file.getFileBinary(), 0, file.getFileBinary().length);
 			bos.flush();
 		} catch (IOException e) {
 			throw e;
 		}
-		file.setFile_path(persistF.getPath());
-		String file_path = file.getFile_path();
-		logger.info("File : " + file.getFile_name() + ", persisted");
+		file.setFilePath(persistF.getPath());
+		String file_path = file.getFilePath();
+		logger.info("File : " + file.getFileName() + ", persisted");
 		return file_path; //上传到object-store
 		//return "http://baidu.com";
 	}
 	
 	
 	/**把文件保存到 objectstore*/
-	private String uploadToCOS(String persistPath)throws SdkClientException {
-		AmazonS3 _cos = COSClient.getClient();
-		String bucket = ConfigUtil.getProperties("bucket");
-		String url = COSOperatorImpl.getInstance().multiPartUpload(_cos, bucket, persistPath);
-		return url;
-	}
+//	private String uploadToCOS(String persistPath)throws SdkClientException {
+//		AmazonS3 _cos = COSClient.getClient();
+//		String bucket = ConfigUtil.getProperties("bucket");
+//		String url = COSOperatorImpl.getInstance().multiPartUpload(_cos, bucket, persistPath);
+//		return url;
+//	}
 	
 }

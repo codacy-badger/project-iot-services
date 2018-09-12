@@ -14,7 +14,7 @@ public class ConfigUtil {
 
 	private static Properties prop = new Properties();
 
-	private static String path = "./config.properties";
+//	private static String path = "./config.properties";
 
 	// static {
 	//

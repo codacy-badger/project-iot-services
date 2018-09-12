@@ -6,7 +6,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 
 import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.cloud.objectstorage.ClientConfiguration;
 import com.ibm.cloud.objectstorage.auth.AWSCredentials;
@@ -16,7 +15,6 @@ import com.ibm.cloud.objectstorage.client.builder.AwsClientBuilder.EndpointConfi
 import com.ibm.cloud.objectstorage.oauth.BasicIBMOAuthCredentials;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3ClientBuilder;
-import com.ibm.cloud.objectstorage.services.s3.model.AmazonS3Exception;
 import com.ibm.cloud.objectstorage.services.s3.model.S3Object;
 import com.ibm.cloud.objectstorage.services.s3.model.S3ObjectInputStream;
 import com.ibm.crl.mv.model.AssetDocs;
@@ -35,7 +33,7 @@ public class VSTest {
 	
 	public static void main(String[] args) {
 		
-		String hash_b = gethash_b("doc.txt");
+		String hash_b = gethashB("doc.txt");
 		System.out.println("hash_b =   "+hash_b);
 		
 		
@@ -55,7 +53,7 @@ public class VSTest {
 	}
 	
 	
-	public static String gethash_b (String filename) {
+	public static String gethashB (String filename) {
 		String bucketName = "mes";
 		String api_key = "6baWsh_GTfduFbZkPCNw-jhFhUaRUW6NA8MXQNefdgj0";
 		String service_instance_id = "crn:v1:bluemix:public:cloud-object-storage:global:a/5c134980da641933383fba31b985b6fa:3978c790-3049-4543-b194-8359f8fb5bad::";
@@ -137,7 +135,7 @@ public class VSTest {
 						String doc_url = doc.getDoc_url();
 						String filename = doc_url.split("/mes/")[1];
 						vsDoc.setFullName(filename);
-						String hash_b =gethash_b(filename);
+						String hash_b =gethashB(filename);
 						String hash_a = doc.getHash();
 						if (hash_a.equalsIgnoreCase(hash_b)) {
 							vsDoc.setDescription("The file hash values are the same！");

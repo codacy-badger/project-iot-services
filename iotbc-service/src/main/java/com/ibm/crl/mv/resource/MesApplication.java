@@ -63,7 +63,7 @@ public class MesApplication {
 			return rr;
 		}
 
-		if (StringUtils.isEmpty(body) || body.equals("{}")) {
+		if (StringUtils.isEmpty(body) || "{}".equals(body)) {
 			rr.setStatus(ResStatus.Fail);
 			String msg = "Post request body is null, pls check ";
 			rr.setMsg(msg);
@@ -75,7 +75,7 @@ public class MesApplication {
 		try {
 			desc = om.readValue(body, BodyDescriptor.class);
 
-			if (StringUtils.isEmpty(desc.getTicketid()) || StringUtils.isEmpty(desc.getLong_description())
+			if (StringUtils.isEmpty(desc.getTicketid()) || StringUtils.isEmpty(desc.getLongDescription())
 					|| StringUtils.isEmpty(desc.getStatus()) || desc.getDocs().isEmpty()) {
 
 				String msg = "There is  the field of null value   in request body";

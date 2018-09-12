@@ -1,11 +1,9 @@
 package com.ibm.crl.mv.utils;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -19,27 +17,6 @@ public class MD5Util {
 			'f' };
 	private static RandomAccessFile randomAccessFile;
 
-//	public static String getFileMD5(String file) throws IOException {
-//		FileInputStream in = null;
-//		try {
-//
-//			in = new FileInputStream(file);
-//			FileChannel ch = in.getChannel();
-//			return MD5(ch.map(FileChannel.MapMode.READ_ONLY, 0, file.length()));
-//
-//		} catch (IOException e) {
-//			throw e;
-//		} finally {
-//			if (in != null) {
-//				try {
-//					in.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//	}
-//	
 	
 	//通过文件路径获取MD5
 	public static String getFileMD5(String filePath) {
@@ -47,7 +24,7 @@ public class MD5Util {
 			randomAccessFile = new RandomAccessFile(filePath, "rw");
 			byte[] bytebuff = new byte[(int)randomAccessFile.length()];
 			randomAccessFile.readFully(bytebuff);	
-			String md5f = MD5(ByteBuffer.wrap(bytebuff));
+			String md5f = md5(ByteBuffer.wrap(bytebuff));
 			return md5f;
 		} catch (Exception e) {
 			return "error";
@@ -65,7 +42,7 @@ public class MD5Util {
 				baos.write(bytebuff, 0, len);		
 			}
 			byte[] buff = baos.toByteArray();
-			String md5 = MD5(ByteBuffer.wrap(buff));
+			String md5 = md5(ByteBuffer.wrap(buff));
 			return md5;
 			
 		} catch (IOException e1) {
@@ -84,7 +61,7 @@ public class MD5Util {
 
 	
 	public static String getFileMD5(byte[] array)  {
-		String md5 = MD5(ByteBuffer.wrap(array));
+		String md5 = md5(ByteBuffer.wrap(array));
 		return md5;
 	}
 	
@@ -152,7 +129,7 @@ public class MD5Util {
 	 * @return 空串，如果无法获得 MessageDigest实例
 	 */
 
-	private static String MD5(ByteBuffer buffer) {
+	private static String md5(ByteBuffer buffer) {
 		String s = "";
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");

@@ -1,20 +1,15 @@
 package com.ibm.crl.iot.test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.io.StringReader;
+
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Base64;
+
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
 
-import com.alibaba.druid.sql.ast.SQLStructDataType.Field;
 import com.ibm.cloud.objectstorage.ClientConfiguration;
 import com.ibm.cloud.objectstorage.SdkClientException;
 import com.ibm.cloud.objectstorage.auth.AWSCredentials;
@@ -33,13 +28,10 @@ import com.ibm.cloud.objectstorage.services.s3.model.InitiateMultipartUploadResu
 import com.ibm.cloud.objectstorage.services.s3.model.ListObjectsRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.ObjectListing;
 import com.ibm.cloud.objectstorage.services.s3.model.PartETag;
-import com.ibm.cloud.objectstorage.services.s3.model.S3Object;
-import com.ibm.cloud.objectstorage.services.s3.model.S3ObjectInputStream;
+
 import com.ibm.cloud.objectstorage.services.s3.model.S3ObjectSummary;
 import com.ibm.cloud.objectstorage.services.s3.model.UploadPartRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.UploadPartResult;
-import com.ibm.crl.mv.utils.COSClient;
-import com.ibm.crl.mv.utils.MD5Util;
 
 public class COSTest {
 
@@ -58,7 +50,8 @@ public class COSTest {
 		String service_instance_id = "crn:v1:bluemix:public:cloud-object-storage:global:a/5c134980da641933383fba31b985b6fa:3978c790-3049-4543-b194-8359f8fb5bad::";
 		String endpoint_url = "https://s3-api.us-geo.objectstorage.softlayer.net";
 		String location = "us";
-		System.out.println("Current time: " + new Timestamp(System.currentTimeMillis()).toString());
+		String demotime = new Timestamp(System.currentTimeMillis()).toString();
+		System.out.println("Current time: " +demotime);
 		_cos = createClient(api_key, service_instance_id, endpoint_url, location);
 		
 		

@@ -109,9 +109,9 @@ public class DocHandler {
 
 			FabricReqDoc bumper = new FabricReqDoc();
 			bumper.setDescription(rd.getDescription());
-			bumper.setDoc_url(rd.getCos_url());
+			bumper.setDocUrl(rd.getCosUrl());
 			bumper.setHash(rd.getHashKey());
-			bumper.setRecord_id(rd.getRecord_ID());
+			bumper.setRecordId(rd.getRecord_ID());
 			bumper.setCreateTime(DateUtils.getUTCTime());
 
 			composerDescriptor.getDocs().add(bumper);
@@ -119,14 +119,14 @@ public class DocHandler {
 			RespResultInfo info = new RespResultInfo();
 
 			info.setFilename(rd.getFullName());
-			info.setHash_key(rd.getHashKey());
+			info.setHashKey(rd.getHashKey());
 
 			rr.getFineResult().add(info);
 
 		});
 
 		// composerDescriptor.set$class(descriptors.get$class());
-		composerDescriptor.setLong_description(descriptors.getLong_description());
+		composerDescriptor.setLongDescription(descriptors.getLongDescription());
 		composerDescriptor.setStatus(descriptors.getStatus());
 		composerDescriptor.setTicketid(descriptors.getTicketid());
 
@@ -248,7 +248,7 @@ public class DocHandler {
 				return;
 			}
 
-			rdd.setCos_url(cos_url);
+			rdd.setCosUrl(cos_url);
 
 			richList.add(rdd);
 
@@ -274,13 +274,13 @@ public class DocHandler {
 
 	}
 
-	private void saveDB(java.util.List<RichDocDescriptor> descSet, String record_ID) throws SQLException {
+	private void saveDB(List<RichDocDescriptor> descSet, String record_ID) throws SQLException {
 
-		java.util.List<Map<String, Object>> mesDocSet = new java.util.ArrayList<>();
+		List<Map<String, Object>> mesDocSet = new ArrayList<>();
 
-		java.util.List<Map<String, Object>> mesJobSet = new java.util.ArrayList<>();
+		List<Map<String, Object>> mesJobSet = new ArrayList<>();
 
-		java.util.List<InsertOperator> insertDatas = new java.util.ArrayList<>();
+		List<InsertOperator> insertDatas = new ArrayList<>();
 
 		String currentTime = DateUtils.getStringDate();
 
@@ -299,7 +299,7 @@ public class DocHandler {
 			MesDoc doc = new MesDoc();
 
 			doc.setHash_key(ufd.getHashKey());
-			doc.setDoc_URL(ufd.getCos_url());
+			doc.setDoc_URL(ufd.getCosUrl());
 			doc.setRecord_ID(record_ID);
 			doc.setCreate_time(currentTime);
 
@@ -339,7 +339,7 @@ public class DocHandler {
 	
 	
 
-	private String gethash_b(String filename) {
+	private String gethashB(String filename) {
 		String bucketName = ConfigUtil.getProperties("bucket");
 		// String api_key = "6baWsh_GTfduFbZkPCNw-jhFhUaRUW6NA8MXQNefdgj0";
 		// String service_instance_id =
@@ -379,17 +379,17 @@ public class DocHandler {
 				vResult.setMsg("Success  Get data from composer！");
 				VSResult vsResult = new VSResult();
 				vsResult.set$class(aResult.get$class());
-				vsResult.setLong_description("Verify file contents！");
+				vsResult.setLongDescription("Verify file contents！");
 				vsResult.setStatus("Verified");
 				vsResult.setTicketid(id);
 				vResult.setVsResult(vsResult);
 				List<AssetDocs> docs = aResult.getDocs();
 				for (AssetDocs doc : docs) {
 					VSDoc vsDoc = new VSDoc();
-					String doc_url = doc.getDoc_url();
+					String doc_url = doc.getDocUrl();
 					String filename = doc_url.split("/mes/")[1];
 					vsDoc.setFullName(filename);
-					String hash_b = gethash_b(filename);
+					String hash_b = gethashB(filename);
 					String hash_a = doc.getHash();
 					if (hash_a.equalsIgnoreCase(hash_b)) {
 						vsDoc.setDescription("The file hash values are the same！");

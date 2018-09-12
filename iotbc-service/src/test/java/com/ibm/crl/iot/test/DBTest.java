@@ -7,6 +7,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 
 public class DBTest {
 
+	private static DruidDataSource druidDataSource;
+
 	public static void main(String[] args) throws SQLException {
 
 		Properties prop = new Properties();
@@ -18,7 +20,7 @@ public class DBTest {
 		prop.put("druid.password", "passw0rd");
 		prop.put("druid.maxActive", "20");
 
-		DruidDataSource druidDataSource = new DruidDataSource();
+		druidDataSource = new DruidDataSource();
 		
 		druidDataSource.configFromPropety(prop);
 		

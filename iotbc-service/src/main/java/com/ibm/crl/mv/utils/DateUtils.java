@@ -38,11 +38,7 @@ public class DateUtils {
 		return currentTime_2;
 	}
 
-	/**
-	 * ��ȡ����ʱ��
-	 * 
-	 * @return�����ַ�����ʽ yyyy-MM-dd HH:mm:ss.SSS
-	 */
+	
 	public static String getStringDate() {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -50,11 +46,7 @@ public class DateUtils {
 		return dateString;
 	}
 
-	/**
-	 * ��ȡ����ʱ��
-	 * 
-	 * @return ���ض�ʱ���ַ�����ʽyyyy-MM-dd
-	 */
+	
 	public static String getStringDateShort() {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -62,11 +54,7 @@ public class DateUtils {
 		return dateString;
 	}
 
-	/**
-	 * ��ȡʱ�� Сʱ:��;�� HH:mm:ss
-	 * 
-	 * @return
-	 */
+	
 	public static String getTimeShort() {
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 		Date currentTime = new Date();
@@ -74,12 +62,7 @@ public class DateUtils {
 		return dateString;
 	}
 
-	/**
-	 * ����ʱ���ʽ�ַ���ת��Ϊʱ�� yyyy-MM-dd HH:mm:ss.SSS
-	 * 
-	 * @param strDate
-	 * @return
-	 */
+	
 	public static Date strToDateLong(String strDate) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		ParsePosition pos = new ParsePosition(0);
@@ -87,37 +70,21 @@ public class DateUtils {
 		return strtodate;
 	}
 
-	/**
-	 * ����ʱ���ʽʱ��ת��Ϊ�ַ��� yyyy-MM-dd HH:mm:ss
-	 * 
-	 * @param dateDate
-	 * @return
-	 */
-	public static String dateToStrLong(java.util.Date dateDate) {
+	
+	public static String dateToStrLong(Date dateDate) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 		String dateString = formatter.format(dateDate);
 		return dateString;
 	}
 
-	/**
-	 * ����ʱ���ʽʱ��ת��Ϊ�ַ��� yyyy-MM-dd
-	 * 
-	 * @param dateDate
-	 * @param k
-	 * @return
-	 */
-	public static String dateToStr(java.util.Date dateDate) {
+	
+	public static String dateToStr(Date dateDate) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		String dateString = formatter.format(dateDate);
 		return dateString;
 	}
 
-	/**
-	 * ����ʱ���ʽ�ַ���ת��Ϊʱ�� yyyy-MM-dd
-	 * 
-	 * @param strDate
-	 * @return
-	 */
+	
 	public static Date strToDate(String strDate) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		ParsePosition pos = new ParsePosition(0);
@@ -125,22 +92,13 @@ public class DateUtils {
 		return strtodate;
 	}
 
-	/**
-	 * �õ�����ʱ��
-	 * 
-	 * @return
-	 */
+	
 	public static Date getNow() {
 		Date currentTime = new Date();
 		return currentTime;
 	}
 
-	/**
-	 * ��ȡһ�����е����һ��
-	 * 
-	 * @param day
-	 * @return
-	 */
+	
 	public static Date getLastDate(long day) {
 		Date date = new Date();
 		long date_3_hm = date.getTime() - 3600000 * 34 * day;
@@ -148,11 +106,7 @@ public class DateUtils {
 		return date_3_hm_date;
 	}
 
-	/**
-	 * �õ�����ʱ��
-	 * 
-	 * @return �ַ��� yyyyMMdd HHmmss
-	 */
+	
 	public static String getStringToday() {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd HHmmss");
@@ -160,9 +114,7 @@ public class DateUtils {
 		return dateString;
 	}
 
-	/**
-	 * �õ�����Сʱ
-	 */
+	
 	public static String getHour() {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -172,11 +124,7 @@ public class DateUtils {
 		return hour;
 	}
 
-	/**
-	 * �õ����ڷ���
-	 * 
-	 * @return
-	 */
+	
 	public static String getTime() {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -186,13 +134,7 @@ public class DateUtils {
 		return min;
 	}
 
-	/**
-	 * �����û������ʱ���ʾ��ʽ�����ص�ǰʱ��ĸ�ʽ �����yyyyMMdd��ע����ĸy���ܴ�д��
-	 * 
-	 * @param sformat
-	 *            yyyyMMddhhmmss
-	 * @return
-	 */
+	
 	public static String getUserDate(String sformat) {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat(sformat);
@@ -200,11 +142,7 @@ public class DateUtils {
 		return dateString;
 	}
 
-	/**
-	 * ��ȡ����ʱ��
-	 * 
-	 * @return���ض�ʱ���ʽ yyyy-MM-dd
-	 */
+	
 	public static Date getNowDateShort() {
 		Date currentTime = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -214,9 +152,7 @@ public class DateUtils {
 		return currentTime_2;
 	}
 
-	/**
-	 * ����Сʱʱ���Ĳ�ֵ,���뱣֤����ʱ�䶼��"HH:MM"�ĸ�ʽ�������ַ��͵ķ���
-	 */
+	
 	public static String getTwoHour(String st1, String st2) {
 		String[] kk = null;
 		String[] jj = null;
@@ -234,15 +170,13 @@ public class DateUtils {
 		}
 	}
 
-	/**
-	 * �õ��������ڼ�ļ������
-	 */
+	
 	public static String getTwoDay(String sj1, String sj2) {
 		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
 		long day = 0;
 		try {
-			java.util.Date date = myFormatter.parse(sj1);
-			java.util.Date mydate = myFormatter.parse(sj2);
+			Date date = myFormatter.parse(sj1);
+			Date mydate = myFormatter.parse(sj2);
 			day = (date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000);
 		} catch (Exception e) {
 			return "";
@@ -250,9 +184,7 @@ public class DateUtils {
 		return day + "";
 	}
 
-	/**
-	 * ʱ��ǰ�ƻ���Ʒ���,����JJ��ʾ����.
-	 */
+	
 	public static String getPreTime(String sj1, String jj) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String mydate1 = "";
@@ -266,9 +198,7 @@ public class DateUtils {
 		return mydate1;
 	}
 
-	/**
-	 * �õ�һ��ʱ���Ӻ��ǰ�Ƽ����ʱ��,nowdateΪʱ��,delayΪǰ�ƻ���ӵ�����
-	 */
+	
 	public static String getNextDay(String nowdate, String delay) {
 		try {
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -283,18 +213,8 @@ public class DateUtils {
 		}
 	}
 
-	/**
-	 * �ж��Ƿ�����
-	 * 
-	 * @param ddate
-	 * @return
-	 */
+	
 	public static boolean isLeapYear(String ddate) {
-
-		/**
-		 * ��ϸ��ƣ� 1.��400���������꣬���� 2.���ܱ�4������������
-		 * 3.�ܱ�4����ͬʱ���ܱ�100������������ 3.�ܱ�4����ͬʱ�ܱ�100������������
-		 */
 		Date d = strToDate(ddate);
 		GregorianCalendar gc = (GregorianCalendar) Calendar.getInstance();
 		gc.setTime(d);
@@ -303,19 +223,14 @@ public class DateUtils {
 			return true;
 		else if ((year % 4) == 0) {
 			if ((year % 100) == 0)
-				return false;
+				return 0 == 1;
 			else
-				return true;
+				return 0 != 1;
 		} else
-			return false;
+			return 0 == 1;
 	}
 
-	/**
-	 * ��������ʱ���ʽ 26 Apr 2006
-	 * 
-	 * @param str
-	 * @return
-	 */
+	
 	public static String getEDate(String str) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		ParsePosition pos = new ParsePosition(0);
@@ -325,12 +240,7 @@ public class DateUtils {
 		return k[2] + k[1].toUpperCase() + k[5].substring(2, 4);
 	}
 
-	/**
-	 * ��ȡһ���µ����һ��
-	 * 
-	 * @param dat
-	 * @return
-	 */
+	
 	public static String getEndDateOfMonth(String dat) {// yyyy-MM-dd
 		String str = dat.substring(0, 8);
 		String month = dat.substring(5, 7);
@@ -349,38 +259,24 @@ public class DateUtils {
 		return str;
 	}
 
-	/**
-	 * �ж϶���ʱ���Ƿ���ͬһ����
-	 * 
-	 * @param date1
-	 * @param date2
-	 * @return
-	 */
+	
 	public static boolean isSameWeekDates(Date date1, Date date2) {
 		Calendar cal1 = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		cal1.setTime(date1);
 		cal2.setTime(date2);
 		int subYear = cal1.get(Calendar.YEAR) - cal2.get(Calendar.YEAR);
-		if (0 == subYear) {
-			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
+		if (0 == subYear && cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR)) {
 				return true;
-		} else if (1 == subYear && 11 == cal2.get(Calendar.MONTH)) {
-			// ���12�µ����һ�ܺ�������һ�ܵĻ������һ�ܼ���������ĵ�һ��
-			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
+		} else if (1 == subYear && 11 == cal2.get(Calendar.MONTH) && cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR)) {
 				return true;
-		} else if (-1 == subYear && 11 == cal1.get(Calendar.MONTH)) {
-			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR))
+		} else if (-1 == subYear && 11 == cal1.get(Calendar.MONTH) && cal1.get(Calendar.WEEK_OF_YEAR) == cal2.get(Calendar.WEEK_OF_YEAR)) {
 				return true;
 		}
 		return false;
 	}
 
-	/**
-	 * ����������,���õ���ǰʱ�����ڵ�����ǵڼ���
-	 * 
-	 * @return
-	 */
+	
 	public static String getSeqWeek() {
 		Calendar c = Calendar.getInstance(Locale.CHINA);
 		String week = Integer.toString(c.get(Calendar.WEEK_OF_YEAR));
@@ -390,41 +286,28 @@ public class DateUtils {
 		return year + week;
 	}
 
-	/**
-	 * ���һ���������ڵ��ܵ����ڼ������ڣ���Ҫ�ҳ�2002��2��3�������ܵ�����һ�Ǽ���
-	 * 
-	 * @param sdate
-	 * @param num
-	 * @return
-	 */
 	public static String getWeek(String sdate, String num) {
-		// ��ת��Ϊʱ��
 		Date dd = strToDate(sdate);
 		Calendar c = Calendar.getInstance();
 		c.setTime(dd);
-		if (num.equals("1")) // ��������һ���ڵ�����
+		if ("1".equals(num)) 
 			c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-		else if (num.equals("2")) // �������ڶ����ڵ�����
+		else if ("2".equals(num)) 
 			c.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-		else if (num.equals("3")) // �������������ڵ�����
+		else if ("3".equals(num)) 
 			c.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-		else if (num.equals("4")) // �������������ڵ�����
+		else if ("4".equals(num)) 
 			c.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-		else if (num.equals("5")) // �������������ڵ�����
+		else if ("5".equals(num)) 
 			c.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-		else if (num.equals("6")) // �������������ڵ�����
+		else if ("6".equals(num))
 			c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-		else if (num.equals("0")) // �������������ڵ�����
+		else if ("7".equals(num)) 
 			c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 		return new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
 	}
 
-	/**
-	 * ����һ�����ڣ����������ڼ����ַ���
-	 * 
-	 * @param sdate
-	 * @return
-	 */
+	
 	public static String getWeek(String sdate) {
 		// ��ת��Ϊʱ��
 		Date date = strToDate(sdate);
@@ -440,39 +323,33 @@ public class DateUtils {
 		String str = "";
 		str = getWeek(sdate);
 		if ("1".equals(str)) {
-			str = "������";
+			str = "星期一";
 		} else if ("2".equals(str)) {
-			str = "����һ";
+			str = "星期二";
 		} else if ("3".equals(str)) {
-			str = "���ڶ�";
+			str = "星期三";
 		} else if ("4".equals(str)) {
-			str = "������";
+			str = "星期四";
 		} else if ("5".equals(str)) {
-			str = "������";
+			str = "星期五";
 		} else if ("6".equals(str)) {
-			str = "������";
+			str = "星期六";
 		} else if ("7".equals(str)) {
-			str = "������";
+			str = "星期日";
 		}
 		return str;
 	}
 
-	/**
-	 * ����ʱ��֮�������
-	 * 
-	 * @param date1
-	 * @param date2
-	 * @return
-	 */
+	
 	public static long getDays(String date1, String date2) {
 		if (date1 == null || date1.equals(""))
 			return 0;
 		if (date2 == null || date2.equals(""))
 			return 0;
-		// ת��Ϊ��׼ʱ��
+
 		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		java.util.Date date = null;
-		java.util.Date mydate = null;
+		Date date = null;
+		Date mydate = null;
 		try {
 			date = myFormatter.parse(date1);
 			mydate = myFormatter.parse(date2);
@@ -482,18 +359,12 @@ public class DateUtils {
 		return day;
 	}
 
-	/**
-	 * �γ����µ����� �� ���ݴ����һ��ʱ�䷵��һ���ṹ ������ ����һ ���ڶ� ������ ������ ������
-	 * ������ �����ǵ��µĸ���ʱ�� �˺������ظ�������һ�����������ڵ�����
-	 * 
-	 * @param sdate
-	 * @return
-	 */
+	
 	public static String getNowMonth(String sdate) {
-		// ȡ��ʱ�������µ�һ��
+		
 		sdate = sdate.substring(0, 8) + "01";
 
-		// �õ�����µ�1�������ڼ�
+		
 		Date date = strToDate(sdate);
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
@@ -502,24 +373,14 @@ public class DateUtils {
 		return newday;
 	}
 
-	/**
-	 * ȡ�����ݿ����� ���ɸ�ʽΪyyyymmddhhmmss+kλ�����
-	 * 
-	 * @param k
-	 *            ��ʾ��ȡ��λ������������Լ���
-	 */
+	
 
 	public static String getNo(int k) {
 
 		return getUserDate("yyyyMMddhhmmss") + getRandom(k);
 	}
 
-	/**
-	 * ����һ�������
-	 * 
-	 * @param i
-	 * @return
-	 */
+	
 	public static String getRandom(int i) {
 		Random jjj = new Random();
 		// int suiJiShu = jjj.nextInt(9);
@@ -532,10 +393,7 @@ public class DateUtils {
 		return jj;
 	}
 
-	/**
-	 * 
-	 * @param args
-	 */
+	
 	public static boolean RightDate(String date) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

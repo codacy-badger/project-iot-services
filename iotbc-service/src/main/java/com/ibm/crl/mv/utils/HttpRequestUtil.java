@@ -13,16 +13,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 
 public final class HttpRequestUtil {
 
-	private static CloseableHttpClient getClient() {
-
-		CloseableHttpClient httpclient = HttpClients.createDefault();
-
-		return httpclient;
-	}
+	
 
 	public static HttpResponse sendGet(String url, String param) throws IOException {
 

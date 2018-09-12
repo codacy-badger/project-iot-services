@@ -2,9 +2,9 @@ package com.ibm.crl.mv.model;
 
 public class FabricReqDoc {
 	
-	public String record_id;
+	public String recordId;
 	
-	public String doc_url;
+	public String docUrl;
 	
 	public String description;
 	
@@ -12,20 +12,22 @@ public class FabricReqDoc {
 	
 	public String createTime;
 
-	public String getRecord_id() {
-		return record_id;
+	
+
+	public String getRecordId() {
+		return recordId;
 	}
 
-	public void setRecord_id(String record_id) {
-		this.record_id = record_id;
+	public void setRecordId(String recordId) {
+		this.recordId = recordId;
 	}
 
-	public String getDoc_url() {
-		return doc_url;
+	public String getDocUrl() {
+		return docUrl;
 	}
 
-	public void setDoc_url(String doc_url) {
-		this.doc_url = doc_url;
+	public void setDocUrl(String docUrl) {
+		this.docUrl = docUrl;
 	}
 
 	public String getDescription() {

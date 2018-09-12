@@ -3,21 +3,23 @@ package com.ibm.crl.mv.maximo.model;
 public class FileModel {
 
 	
-	private String file_name;
-	private String file_binary;
+	private String fileName;
+	private String fileBinary;
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFileBinary() {
+		return fileBinary;
+	}
+	public void setFileBinary(String fileBinary) {
+		this.fileBinary = fileBinary;
+	}
 
 	
-	public String getFile_name() {
-		return file_name;
-	}
-	public void setFile_name(String file_name) {
-		this.file_name = file_name;
-	}
-	public String getFile_binary() {
-		return file_binary;
-	}
-	public void setFile_binary(String file_binary) {
-		this.file_binary = file_binary;
-	}
+	
 	
 }

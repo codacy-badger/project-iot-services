@@ -4,7 +4,7 @@ public class RespResultInfo {
 
 	private String filename;
 	
-	private String hash_key;
+	private String hashKey;
 	
 	private String tiketid;
 	
@@ -12,15 +12,6 @@ public class RespResultInfo {
 	
 	
 	
-
-
-	public RespResultInfo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-
 	public String getFilename() {
 		return filename;
 	}
@@ -29,12 +20,13 @@ public class RespResultInfo {
 		this.filename = filename;
 	}
 
-	public String getHash_key() {
-		return hash_key;
+	
+	public String getHashKey() {
+		return hashKey;
 	}
 
-	public void setHash_key(String hash_key) {
-		this.hash_key = hash_key;
+	public void setHashKey(String hashKey) {
+		this.hashKey = hashKey;
 	}
 
 	public String getMsg() {

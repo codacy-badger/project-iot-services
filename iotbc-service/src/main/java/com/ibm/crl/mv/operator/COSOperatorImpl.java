@@ -11,7 +11,7 @@ import com.ibm.cloud.objectstorage.SdkClientException;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
 import com.ibm.cloud.objectstorage.services.s3.model.AbortMultipartUploadRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.CompleteMultipartUploadRequest;
-import com.ibm.cloud.objectstorage.services.s3.model.GetObjectAclRequest;
+//import com.ibm.cloud.objectstorage.services.s3.model.GetObjectAclRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.InitiateMultipartUploadRequest;
 import com.ibm.cloud.objectstorage.services.s3.model.InitiateMultipartUploadResult;
 import com.ibm.cloud.objectstorage.services.s3.model.PartETag;
@@ -71,7 +71,7 @@ public class COSOperatorImpl implements COSBucketOperator, COSObjectOperator {
 	}
 
 	@Override
-	public List listObject(AmazonS3 _cos, String bucketName) throws SdkClientException {
+	public List<?> listObject(AmazonS3 _cos, String bucketName) throws SdkClientException {
 
 		return null;
 	}
@@ -86,7 +86,7 @@ public class COSOperatorImpl implements COSBucketOperator, COSObjectOperator {
 
 	@Override
 	public void listBuckets(AmazonS3 _cos) throws SdkClientException {
-
+		return;
 	}
 
 	@Override

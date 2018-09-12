@@ -8,11 +8,11 @@ public class AssetRequest {
 	private String asset_number;
 	private String des;
 	private	String srtype;
-	private String long_des;
+	private String longDes;
 	private String location;
-	private String report_date;
+	private String reportDate;
 	private String status;
-	private List<FileModel> file_list = new ArrayList<>();
+	private List<FileModel> fileList = new ArrayList<>();
 	
 
 	public String getAsset_number() {
@@ -39,12 +39,12 @@ public class AssetRequest {
 		this.srtype = srtype;
 	}
 
-	public String getLong_des() {
-		return long_des;
+	public String getLongDes() {
+		return longDes;
 	}
 
-	public void setLong_des(String long_des) {
-		this.long_des = long_des;
+	public void setLongDes(String longDes) {
+		this.longDes = longDes;
 	}
 
 	public String getLocation() {
@@ -55,14 +55,6 @@ public class AssetRequest {
 		this.location = location;
 	}
 
-	public String getReport_date() {
-		return report_date;
-	}
-
-	public void setReport_date(String report_date) {
-		this.report_date = report_date;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -71,13 +63,23 @@ public class AssetRequest {
 		this.status = status;
 	}
 
-	public List<FileModel> getFile_list() {
-		return file_list;
+	public String getReportDate() {
+		return reportDate;
 	}
 
-	public void setFile_list(List<FileModel> file_list) {
-		this.file_list = file_list;
-	} 
+	public void setReportDate(String reportDate) {
+		this.reportDate = reportDate;
+	}
+
+	public List<FileModel> getFileList() {
+		return fileList;
+	}
+
+	public void setFileList(List<FileModel> fileList) {
+		this.fileList = fileList;
+	}
+
+	
 	
 	
 }

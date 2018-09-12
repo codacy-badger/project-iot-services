@@ -13,7 +13,7 @@ public class RichDocDescriptor {
 	
 	private String persistPath;
 	
-	private String cos_url;
+	private String cosUrl;
 	
 	private String record_ID;
 
@@ -58,12 +58,13 @@ public class RichDocDescriptor {
 		this.persistPath = persistPath;
 	}
 
-	public String getCos_url() {
-		return cos_url;
+
+	public String getCosUrl() {
+		return cosUrl;
 	}
 
-	public void setCos_url(String cos_url) {
-		this.cos_url = cos_url;
+	public void setCosUrl(String cosUrl) {
+		this.cosUrl = cosUrl;
 	}
 
 	public String getRecord_ID() {

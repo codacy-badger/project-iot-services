@@ -11,7 +11,7 @@ public interface COSBucketOperator{
 	
 	public void createBucket(AmazonS3 _cos, String bucketName)throws SdkClientException;
 	
-	public List  listObject(AmazonS3 _cos, String bucketName)throws SdkClientException;
+	public List<?>  listObject(AmazonS3 _cos, String bucketName)throws SdkClientException;
 	
 	public void delBucket(AmazonS3 _cos, String bucketName)throws SdkClientException;
 	

@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -18,9 +17,6 @@ import org.apache.commons.codec.binary.Base64;
  */
 public final class Base64Utils {
 
-	public static void main(String[] args) {
-
-	}
 
 	public static java.util.Optional<byte[]> decodeStrToByteArray(String inputStr) throws IOException {
 

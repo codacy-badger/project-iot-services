@@ -4,7 +4,7 @@ package com.ibm.crl.mv.maximo.model;
 public class SRHistModel {
 
    private String $class;
-   private String ticketid_time;
+   private String ticketidTime;
    private UpdateRep evt;
    
    public void set$class(String $class) {
@@ -14,14 +14,13 @@ public class SRHistModel {
         return $class;
     }
 
-   public void setTicketid_time(String ticketid_time) {
-        this.ticketid_time = ticketid_time;
-    }
-    public String getTicketid_time() {
-        return ticketid_time;
-    }
-
-   public void setEvt(UpdateRep evt) {
+   public String getTicketidTime() {
+		return ticketidTime;
+	}
+	public void setTicketidTime(String ticketidTime) {
+		this.ticketidTime = ticketidTime;
+	}
+public void setEvt(UpdateRep evt) {
         this.evt = evt;
     }
     public UpdateRep getEvt() {
