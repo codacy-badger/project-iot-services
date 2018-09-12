@@ -1,96 +1,96 @@
 package com.ibm.crl.iot.test;
 
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.util.EntityUtils;
-
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ibm.cloud.objectstorage.ClientConfiguration;
-import com.ibm.cloud.objectstorage.auth.AWSCredentials;
-import com.ibm.cloud.objectstorage.auth.AWSStaticCredentialsProvider;
-import com.ibm.cloud.objectstorage.auth.BasicAWSCredentials;
-import com.ibm.cloud.objectstorage.client.builder.AwsClientBuilder.EndpointConfiguration;
-import com.ibm.cloud.objectstorage.oauth.BasicIBMOAuthCredentials;
-import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
-import com.ibm.cloud.objectstorage.services.s3.AmazonS3ClientBuilder;
-import com.ibm.cloud.objectstorage.services.s3.model.S3Object;
-import com.ibm.cloud.objectstorage.services.s3.model.S3ObjectInputStream;
-import com.ibm.crl.mv.model.AssetDocs;
-import com.ibm.crl.mv.model.AssetResult;
-import com.ibm.crl.mv.model.VSDoc;
-import com.ibm.crl.mv.model.VSRespResult;
-import com.ibm.crl.mv.model.VSRespResult.VSResStatus;
-import com.ibm.crl.mv.model.VSResult;
-import com.ibm.crl.mv.utils.HttpRequestUtil;
+//import java.util.List;
+//
+//import org.apache.http.HttpResponse;
+//import org.apache.http.util.EntityUtils;
+//
+//import com.fasterxml.jackson.core.JsonFactory;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.ibm.cloud.objectstorage.ClientConfiguration;
+//import com.ibm.cloud.objectstorage.auth.AWSCredentials;
+//import com.ibm.cloud.objectstorage.auth.AWSStaticCredentialsProvider;
+//import com.ibm.cloud.objectstorage.auth.BasicAWSCredentials;
+//import com.ibm.cloud.objectstorage.client.builder.AwsClientBuilder.EndpointConfiguration;
+//import com.ibm.cloud.objectstorage.oauth.BasicIBMOAuthCredentials;
+//import com.ibm.cloud.objectstorage.services.s3.AmazonS3;
+//import com.ibm.cloud.objectstorage.services.s3.AmazonS3ClientBuilder;
+//import com.ibm.cloud.objectstorage.services.s3.model.S3Object;
+//import com.ibm.cloud.objectstorage.services.s3.model.S3ObjectInputStream;
+//import com.ibm.crl.mv.model.AssetDocs;
+//import com.ibm.crl.mv.model.AssetResult;
+//import com.ibm.crl.mv.model.VSDoc;
+//import com.ibm.crl.mv.model.VSRespResult;
+//import com.ibm.crl.mv.model.VSRespResult.VSResStatus;
+//import com.ibm.crl.mv.model.VSResult;
+//import com.ibm.crl.mv.utils.HttpRequestUtil;
+////import com.ibm.crl.mv.utils.MD5Util;
 //import com.ibm.crl.mv.utils.MD5Util;
-import com.ibm.crl.mv.utils.MD5Util;
 
 public class VSTest {
-	private static ObjectMapper jsonOm = new ObjectMapper(new JsonFactory());
-	private static AmazonS3 _cos;
-	
-	public static void main(String[] args) {
-		
-		String hash_b = gethashB("doc.txt");
-		System.out.println("hash_b =   "+hash_b);
-
-	}
-	
-	
-	public static String gethashB (String filename) {
-		String bucketName = "mes";
-		String api_key = "6baWsh_GTfduFbZkPCNw-jhFhUaRUW6NA8MXQNefdgj0";
-		String service_instance_id = "crn:v1:bluemix:public:cloud-object-storage:global:a/5c134980da641933383fba31b985b6fa:3978c790-3049-4543-b194-8359f8fb5bad::";
-		String endpoint_url = "https://s3-api.us-geo.objectstorage.softlayer.net";
-		String location = "us";
-		_cos = createClient(api_key, service_instance_id, endpoint_url, location);
-		S3Object s3Object = _cos.getObject(bucketName, filename);
-		S3ObjectInputStream s3ObjectInputStream = s3Object.getObjectContent();
-		System.out.println( "code = "+s3Object.getKey());
-		String md = MD5Util.getStreamMD5(s3ObjectInputStream);
-		return md;
-	}
-	
-	
-	
-//	public static AmazonS3 createClient(String api_key, String service_instance_id, String endpoint_url,
-//			String location) {
-//		AWSCredentials credentials;
-//		if (endpoint_url.contains("objectstorage.softlayer.net")) {
-//			credentials = new BasicIBMOAuthCredentials(api_key, service_instance_id);
-//		} else {
-//			String access_key = api_key;
-//			String secret_key = service_instance_id;
-//			credentials = new BasicAWSCredentials(access_key, secret_key);
-//		}
-//		ClientConfiguration clientConfig = new ClientConfiguration().withRequestTimeout(5000);
-//		clientConfig.setUseTcpKeepAlive(true);
+//	private static ObjectMapper jsonOm = new ObjectMapper(new JsonFactory());
+//	private static AmazonS3 _cos;
 //
-//		AmazonS3 cos = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
-//				.withEndpointConfiguration(new EndpointConfiguration(endpoint_url, location))
-//				.withPathStyleAccessEnabled(true).withClientConfiguration(clientConfig).build();
-//		return cos;
+//	public static void main(String[] args) {
+//
+//		String hash_b = gethashB("doc.txt");
+//		System.out.println("hash_b =   "+hash_b);
+//
 //	}
-	
-	
-	public static String composerTest(String id) {
-		String url = "http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/";
-		try {
-			 HttpResponse response = HttpRequestUtil.sendGet(url, id);//HttpRequestUtil.sendGet("http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/",id);
-			 if (response.getStatusLine().getStatusCode() == 200) {
-				 String fine = EntityUtils.toString(response.getEntity(),"UTF-8");
-				 return fine;
-			 }else {
-				return "请求失败";
-			}
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			return e.toString();
-		}
-	}
+//
+//
+//	public static String gethashB (String filename) {
+//		String bucketName = "mes";
+//		String api_key = "6baWsh_GTfduFbZkPCNw-jhFhUaRUW6NA8MXQNefdgj0";
+//		String service_instance_id = "crn:v1:bluemix:public:cloud-object-storage:global:a/5c134980da641933383fba31b985b6fa:3978c790-3049-4543-b194-8359f8fb5bad::";
+//		String endpoint_url = "https://s3-api.us-geo.objectstorage.softlayer.net";
+//		String location = "us";
+//		_cos = createClient(api_key, service_instance_id, endpoint_url, location);
+//		S3Object s3Object = _cos.getObject(bucketName, filename);
+//		S3ObjectInputStream s3ObjectInputStream = s3Object.getObjectContent();
+//		System.out.println( "code = "+s3Object.getKey());
+//		String md = MD5Util.getStreamMD5(s3ObjectInputStream);
+//		return md;
+//	}
+//
+//
+//
+////	public static AmazonS3 createClient(String api_key, String service_instance_id, String endpoint_url,
+////			String location) {
+////		AWSCredentials credentials;
+////		if (endpoint_url.contains("objectstorage.softlayer.net")) {
+////			credentials = new BasicIBMOAuthCredentials(api_key, service_instance_id);
+////		} else {
+////			String access_key = api_key;
+////			String secret_key = service_instance_id;
+////			credentials = new BasicAWSCredentials(access_key, secret_key);
+////		}
+////		ClientConfiguration clientConfig = new ClientConfiguration().withRequestTimeout(5000);
+////		clientConfig.setUseTcpKeepAlive(true);
+////
+////		AmazonS3 cos = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
+////				.withEndpointConfiguration(new EndpointConfiguration(endpoint_url, location))
+////				.withPathStyleAccessEnabled(true).withClientConfiguration(clientConfig).build();
+////		return cos;
+////	}
+//
+//
+//	public static String composerTest(String id) {
+//		String url = "http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/";
+//		try {
+//			 HttpResponse response = HttpRequestUtil.sendGet(url, id);//HttpRequestUtil.sendGet("http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/",id);
+//			 if (response.getStatusLine().getStatusCode() == 200) {
+//				 String fine = EntityUtils.toString(response.getEntity(),"UTF-8");
+//				 return fine;
+//			 }else {
+//				return "请求失败";
+//			}
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			return e.toString();
+//		}
+//	}
 	
 	
 //	public static VSRespResult vsResult(String id) {
@@ -137,20 +137,20 @@ public class VSTest {
 //					return vResult;
 //				}
 //
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			vResult.setResStatus(VSResStatus.Fail);
-			vResult.setMsg("Composer service isn't established!!!");
-			vResult.setVsResult(null);
-			return vResult;
-		}
-		
-		
-		return vResult;
-	}
-	
+//
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//			vResult.setResStatus(VSResStatus.Fail);
+//			vResult.setMsg("Composer service isn't established!!!");
+//			vResult.setVsResult(null);
+//			return vResult;
+//		}
+//
+//
+//		return vResult;
+//	}
+//
 	
 
 }
