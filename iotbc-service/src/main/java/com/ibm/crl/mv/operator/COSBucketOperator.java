@@ -1,6 +1,5 @@
 package com.ibm.crl.mv.operator;
 
-import java.util.List;
 
 import com.ibm.cloud.objectstorage.SdkClientException;
 import com.ibm.cloud.objectstorage.services.s3.AmazonS3;

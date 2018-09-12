@@ -55,24 +55,24 @@ public class VSTest {
 	
 	
 	
-	public static AmazonS3 createClient(String api_key, String service_instance_id, String endpoint_url,
-			String location) {
-		AWSCredentials credentials;
-		if (endpoint_url.contains("objectstorage.softlayer.net")) {
-			credentials = new BasicIBMOAuthCredentials(api_key, service_instance_id);
-		} else {
-			String access_key = api_key;
-			String secret_key = service_instance_id;
-			credentials = new BasicAWSCredentials(access_key, secret_key);
-		}
-		ClientConfiguration clientConfig = new ClientConfiguration().withRequestTimeout(5000);
-		clientConfig.setUseTcpKeepAlive(true);
-
-		AmazonS3 cos = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
-				.withEndpointConfiguration(new EndpointConfiguration(endpoint_url, location))
-				.withPathStyleAccessEnabled(true).withClientConfiguration(clientConfig).build();
-		return cos;
-	}
+//	public static AmazonS3 createClient(String api_key, String service_instance_id, String endpoint_url,
+//			String location) {
+//		AWSCredentials credentials;
+//		if (endpoint_url.contains("objectstorage.softlayer.net")) {
+//			credentials = new BasicIBMOAuthCredentials(api_key, service_instance_id);
+//		} else {
+//			String access_key = api_key;
+//			String secret_key = service_instance_id;
+//			credentials = new BasicAWSCredentials(access_key, secret_key);
+//		}
+//		ClientConfiguration clientConfig = new ClientConfiguration().withRequestTimeout(5000);
+//		clientConfig.setUseTcpKeepAlive(true);
+//
+//		AmazonS3 cos = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
+//				.withEndpointConfiguration(new EndpointConfiguration(endpoint_url, location))
+//				.withPathStyleAccessEnabled(true).withClientConfiguration(clientConfig).build();
+//		return cos;
+//	}
 	
 	
 	public static String composerTest(String id) {
@@ -93,50 +93,50 @@ public class VSTest {
 	}
 	
 	
-	public static VSRespResult vsResult(String id) {
-		VSRespResult vResult = new VSRespResult();
-		String url = "http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/";
-		try {
-			
-				HttpResponse response = HttpRequestUtil.sendGet(url, id);
-				if (response.getStatusLine().getStatusCode() == 200) {
-					String fine = EntityUtils.toString(response.getEntity(),"UTF-8");
-					
-					System.out.println(fine);
-					
-					AssetResult aResult = jsonOm.readValue(fine, AssetResult.class);
-					vResult.setResStatus(VSResStatus.Success);
-					vResult.setMsg("Success  Get data from composer！");
-					
-					VSResult vsResult = new VSResult();
-					vsResult.set$class(aResult.get$class());
-					vsResult.setLongDescription("Verify file contents！");
-					vsResult.setStatus("Verified");
-					vsResult.setTicketid(id);
-					
-					vResult.setVsResult(vsResult);
-					List<AssetDocs>docs = aResult.getDocs();
-					for (AssetDocs doc : docs) {
-						VSDoc vsDoc = new VSDoc();
-						String doc_url = doc.getDocUrl();
-						String filename = doc_url.split("/mes/")[1];
-						vsDoc.setFullName(filename);
-						String hash_b =gethashB(filename);
-						String hash_a = doc.getHash();
-						if (hash_a.equalsIgnoreCase(hash_b)) {
-							vsDoc.setDescription("The file hash values are the same！");
-							vsDoc.setValidation(true);
-						}else {
-							vsDoc.setDescription("The file hash values are different！");
-							vsDoc.setValidation(false);
-						}
-						
-						vResult.getVsResult().getvDocs().add(vsDoc);
-					}
-					
-					return vResult;
-				}
-			
+//	public static VSRespResult vsResult(String id) {
+//		VSRespResult vResult = new VSRespResult();
+//		String url = "http://9.186.104.215:3000/api/org.poc.maximo.example.Sr/";
+//		try {
+//
+//				HttpResponse response = HttpRequestUtil.sendGet(url, id);
+//				if (response.getStatusLine().getStatusCode() == 200) {
+//					String fine = EntityUtils.toString(response.getEntity(),"UTF-8");
+//
+//					System.out.println(fine);
+//
+//					AssetResult aResult = jsonOm.readValue(fine, AssetResult.class);
+//					vResult.setResStatus(VSResStatus.Success);
+//					vResult.setMsg("Success  Get data from composer！");
+//
+//					VSResult vsResult = new VSResult();
+//					vsResult.set$class(aResult.get$class());
+//					vsResult.setLongDescription("Verify file contents！");
+//					vsResult.setStatus("Verified");
+//					vsResult.setTicketid(id);
+//
+//					vResult.setVsResult(vsResult);
+//					List<AssetDocs>docs = aResult.getDocs();
+//					for (AssetDocs doc : docs) {
+//						VSDoc vsDoc = new VSDoc();
+//						String doc_url = doc.getDocUrl();
+//						String filename = doc_url.split("/mes/")[1];
+//						vsDoc.setFullName(filename);
+//						String hash_b =gethashB(filename);
+//						String hash_a = doc.getHash();
+//						if (hash_a.equalsIgnoreCase(hash_b)) {
+//							vsDoc.setDescription("The file hash values are the same！");
+//							vsDoc.setValidation(true);
+//						}else {
+//							vsDoc.setDescription("The file hash values are different！");
+//							vsDoc.setValidation(false);
+//						}
+//
+//						vResult.getVsResult().getvDocs().add(vsDoc);
+//					}
+//
+//					return vResult;
+//				}
+//
 			
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -104,24 +104,24 @@ public class COSTest {
 	 * @param location
 	 * @return AmazonS3
 	 */
-	public static AmazonS3 createClient(String api_key, String service_instance_id, String endpoint_url,
-			String location) {
-		AWSCredentials credentials;
-		if (endpoint_url.contains("objectstorage.softlayer.net")) {
-			credentials = new BasicIBMOAuthCredentials(api_key, service_instance_id);
-		} else {
-			String access_key = api_key;
-			String secret_key = service_instance_id;
-			credentials = new BasicAWSCredentials(access_key, secret_key);
-		}
-		ClientConfiguration clientConfig = new ClientConfiguration().withRequestTimeout(5000);
-		clientConfig.setUseTcpKeepAlive(true);
-
-		AmazonS3 cos = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
-				.withEndpointConfiguration(new EndpointConfiguration(endpoint_url, location))
-				.withPathStyleAccessEnabled(true).withClientConfiguration(clientConfig).build();
-		return cos;
-	}
+//	public static AmazonS3 createClient(String api_key, String service_instance_id, String endpoint_url,
+//			String location) {
+//		AWSCredentials credentials;
+//		if (endpoint_url.contains("objectstorage.softlayer.net")) {
+//			credentials = new BasicIBMOAuthCredentials(api_key, service_instance_id);
+//		} else {
+//			String access_key = api_key;
+//			String secret_key = service_instance_id;
+//			credentials = new BasicAWSCredentials(access_key, secret_key);
+//		}
+//		ClientConfiguration clientConfig = new ClientConfiguration().withRequestTimeout(5000);
+//		clientConfig.setUseTcpKeepAlive(true);
+//
+//		AmazonS3 cos = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
+//				.withEndpointConfiguration(new EndpointConfiguration(endpoint_url, location))
+//				.withPathStyleAccessEnabled(true).withClientConfiguration(clientConfig).build();
+//		return cos;
+//	}
 
 	public static void delAllObjects(String bucketName, AmazonS3 cos) {
 
